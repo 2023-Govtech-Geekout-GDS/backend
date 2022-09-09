@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const methods_1 = require("./methods");
 const forwardRouter = (0, express_1.Router)();
-forwardRouter.get("/hello", methods_1.sayHello);
 forwardRouter.get("/todos", methods_1.createTodo);
 forwardRouter.get("/todos", methods_1.getAllTodos);
 forwardRouter.get("/todos/:id", methods_1.getTodoById);

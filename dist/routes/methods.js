@@ -3,10 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sayHello = exports.createRandomTodo = exports.getTodoById = exports.updateTodoById = exports.deleteTodoById = exports.getAllTodos = exports.createTodo = void 0;
+exports.createRandomTodo = exports.getTodoById = exports.updateTodoById = exports.deleteTodoById = exports.getAllTodos = exports.createTodo = void 0;
 const uuid_1 = require("uuid");
 const node_fetch_1 = __importDefault(require("node-fetch"));
-// import fetch from "node-fetch";
 // This is not exported, which means only methods exposed in this file will access it.
 const todoList = {};
 // Option 1 - wrapper for arbitrary messages
@@ -107,7 +106,3 @@ async function createRandomTodo(_req, res) {
     }
 }
 exports.createRandomTodo = createRandomTodo;
-async function sayHello(req, res) {
-    res.status(200).json({ title: "Hello World" });
-}
-exports.sayHello = sayHello;
