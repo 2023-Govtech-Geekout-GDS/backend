@@ -1,7 +1,10 @@
 {
     "extends": "@tsconfig/node16/tsconfig.json",
     "compilerOptions": {
-        "outDir": "dist"
+        "module": "CommonJS",
+        "outDir": "dist",
+        "baseUrl": "src",
+        "target": "ES2021"
     },
     "include": [
         "src"
