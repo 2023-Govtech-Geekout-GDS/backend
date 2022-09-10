@@ -1,31 +1,44 @@
+include:
+  - project: "2022-engineering-bootcamp-gds/templates"
+    ref: "main"
+    file:
+      - /templates/.gitlab-aws-cli.yml
+
 stages:
   - build
   - test
+  - publish
   - deploy
 
 build-stage:
   image: docker:stable
   stage: build
-  variable:
+  variables:
     CONTAINER_BUILD_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-  # tags:
-  #   - byod
+  tags:
+    - byod
   before_script:
-    # - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - echo "Login to Gitlab Registry"
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - echo "Build and push image to registry"
-    # - docker build -t $CONTAINER_BUILD_IMAGE .
-    # - docker push $CONTAINER_BUILD_IMAGE
+    - docker build -t $CONTAINER_BUILD_IMAGE .
+    - docker push $CONTAINER_BUILD_IMAGE
 
 test-stage:
   stage: test
   script:
     - echo "Run unit test"
 
+publish-stage:
+  extends: .invoke-awscli-commands-with-assumerole
+  variables:
+    - ROLE_ARN: arn:aws:iam::477843748912:role/bootcamp-gitlab-oidc-role
+  stage: publish
+  script:
+    - echo "Call ECR Service"
+    - aws ecr describe-repositories
+
 deploy-stage:
   stage: deploy
-  before_script:
-    - echo "Push to ECR"
   script:
-    - echo "Update ECS Service"
+    - echo "Update ECS cluster"

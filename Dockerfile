@@ -12,4 +12,4 @@ RUN npm install
 
 COPY --chown=${user} . .
 
-CMD [ "npm", "run", "startjs" ]
+CMD [ "npm", "run", "dist" ]
