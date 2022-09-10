@@ -2,7 +2,7 @@ include:
   - project: "2022-engineering-bootcamp-gds/templates"
     ref: "main"
     file:
-      - /templates/.gitlab-aws-cli.yml
+      - .gitlab-aws-cli.yml
 
 stages:
   - build
