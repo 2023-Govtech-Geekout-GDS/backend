@@ -31,16 +31,18 @@ test-stage:
 
 publish-stage:
   extends: .invoke-awscli-commands-with-assumerole
-  image: 
-    name: $CI_REGISTRY/templates
+  image:
+    name: $CI_REGISTRY/2022-engineering-bootcamp-gds/templates
     entrypoint:
       - '/usr/bin/env'
   variables:
     ROLE_ARN: arn:aws:iam::477843748912:role/gitlab-bootcamp-oidc-role
   stage: publish
   script:
-    - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 477843748912.dkr.ecr.ap-southeast-1.amazonaws.com
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:latest
     - docker tag $CI_REGISTRY_IMAGE:latest 477843748912.dkr.ecr.ap-southeast-1.amazonaws.com/backend_bootcamp:latest
+    - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 477843748912.dkr.ecr.ap-southeast-1.amazonaws.com
     - docker push 477843748912.dkr.ecr.ap-southeast-1.amazonaws.com/backend_bootcamp:latest
 
 deploy-stage:
