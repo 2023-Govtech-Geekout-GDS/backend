@@ -14,7 +14,7 @@ build-stage:
   image: docker:stable
   stage: build
   variables:
-    CONTAINER_BUILD_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    CONTAINER_BUILD_IMAGE: $CI_REGISTRY_IMAGE:latest
   tags:
     - local
   before_script:
@@ -35,10 +35,13 @@ publish-stage:
     ROLE_ARN: arn:aws:iam::477843748912:role/gitlab-bootcamp-oidc-role
   stage: publish
   script:
-    - echo "Call ECR Service"
-    - aws ecr describe-repositories
+    - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 477843748912.dkr.ecr.ap-southeast-1.amazonaws.com
+    - docker tag $CI_REGISTRY_IMAGE:latest 477843748912.dkr.ecr.ap-southeast-1.amazonaws.com/backend_bootcamp:latest
+    - docker push 477843748912.dkr.ecr.ap-southeast-1.amazonaws.com/backend_bootcamp:latest
 
 deploy-stage:
+  extends: .invoke-awscli-commands-with-assumerole
   stage: deploy
   script:
     - echo "Update ECS cluster"
+    - aws ecs update-service --cluster bootcamp-demo-application --service backend-app --force-new-deployment --region ap-southeast-1
