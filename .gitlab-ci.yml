@@ -31,6 +31,10 @@ test-stage:
 
 publish-stage:
   extends: .invoke-awscli-commands-with-assumerole
+  image: 
+    name: $CI_REGISTRY/templates
+    entrypoint:
+      - '/usr/bin/env'
   variables:
     ROLE_ARN: arn:aws:iam::477843748912:role/gitlab-bootcamp-oidc-role
   stage: publish
@@ -42,6 +46,8 @@ publish-stage:
 deploy-stage:
   extends: .invoke-awscli-commands-with-assumerole
   stage: deploy
+  variables:
+    ROLE_ARN: arn:aws:iam::477843748912:role/gitlab-bootcamp-oidc-role
   script:
     - echo "Update ECS cluster"
     - aws ecs update-service --cluster bootcamp-demo-application --service backend-app --force-new-deployment --region ap-southeast-1
