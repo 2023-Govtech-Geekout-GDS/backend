@@ -35,6 +35,8 @@ publish-stage:
     name: $CI_REGISTRY/2022-engineering-bootcamp-gds/templates
     entrypoint:
       - '/usr/bin/env'
+  tags:
+    - local
   variables:
     ROLE_ARN: arn:aws:iam::477843748912:role/gitlab-bootcamp-oidc-role
   stage: publish
@@ -48,6 +50,8 @@ publish-stage:
 deploy-stage:
   extends: .invoke-awscli-commands-with-assumerole
   stage: deploy
+  tags:
+    - local
   variables:
     ROLE_ARN: arn:aws:iam::477843748912:role/gitlab-bootcamp-oidc-role
   script:
