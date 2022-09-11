@@ -32,7 +32,7 @@ test-stage:
 publish-stage:
   extends: .invoke-awscli-commands-with-assumerole
   variables:
-    ROLE_ARN: arn:aws:iam::477843748912:role/bootcamp-gitlab-oidc-role
+    ROLE_ARN: arn:aws:iam::477843748912:role/gitlab-bootcamp-oidc-role
   stage: publish
   script:
     - echo "Call ECR Service"
