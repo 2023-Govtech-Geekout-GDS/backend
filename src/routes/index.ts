@@ -9,7 +9,7 @@ import {
 } from "./methods";
 
 const forwardRouter = Router();
-forwardRouter.get("/todos", createTodo);
+forwardRouter.post("/todos", createTodo);
 forwardRouter.get("/todos", getAllTodos);
 forwardRouter.get("/todos/:id", getTodoById);
 forwardRouter.put("/todos/:id", updateTodoById);
