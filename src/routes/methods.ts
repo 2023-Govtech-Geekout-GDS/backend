@@ -61,10 +61,8 @@ export async function deleteTodoById(req: Request, res: Response) {
 export async function updateTodoById(req: Request, res: Response) {
     const { id } = req.params;
     const updatedTodo = req.body;
-    if (updatedTodo.id !== id) {
-        return res.status(409).json(messageJson("UUID in path and body do not match"));
-    } else if (id in todoList) {
-        todoList[id] = updatedTodo;
+    if (id in todoList) {
+        todoList[id] = {...todoList[id], ...updatedTodo};
         return res.status(200).send();
     } else {
         return res.status(400).json(messageJson("UUID does not exist"));
@@ -81,9 +79,6 @@ export async function getTodoById(req: Request, res: Response) {
 }
 
 export async function createRandomTodo(_req: Request, res: Response) {
-    const abortController = new AbortController();
-    setTimeout(() => abortController.abort(), 3000);
-
     try {
         const responseJson = await fetch("http://www.boredapi.com/api/activity")
             .then(apiResponse => apiResponse.json());
