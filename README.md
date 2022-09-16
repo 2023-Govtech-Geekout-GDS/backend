@@ -18,7 +18,7 @@ There are a couple of things you need for this workshop:
 
 To learn more about how the application is structured, see [Architecture.md](./ARCHITECTURE.md)
 
-Once you're ready, let's get started with the [Exercise List](https://gds-engineering-bootcamp.gitlab.io/documentation/docs/intro)
+Once you're ready, let's get started with the [Exercise List](https://gds-engineering-bootcamp.gitlab.io/documentation/docs/introduction/GettingStarted)
 
 ## Commands
 - Run Application - ```npm run start```
