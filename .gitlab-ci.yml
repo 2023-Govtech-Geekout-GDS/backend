@@ -32,7 +32,7 @@ test-stage:
 publish-stage:
   extends: .invoke-awscli-commands-with-assumerole
   image:
-    name: $CI_REGISTRY/2022-engineering-bootcamp-gds/templates
+    name: $CI_REGISTRY/gds-engineering-bootcamp/templates
     entrypoint:
       - '/usr/bin/env'
   tags:
