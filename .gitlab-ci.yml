@@ -1,5 +1,5 @@
 include:
-  - project: "2022-engineering-bootcamp-gds/templates"
+  - project: "gds-engineering-bootcamp/templates"
     ref: "main"
     file:
       - .gitlab-aws-cli.yml
