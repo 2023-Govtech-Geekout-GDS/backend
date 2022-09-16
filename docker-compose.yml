@@ -1,0 +1,15 @@
+version: '3.0'
+
+services:
+  backend:
+    build: .
+    command: "npm start"
+    environment:
+      NODE_ENV: development
+      APP_URL: http://localhost:3000
+      API_URL: http://localhost:3001
+      PORT: 3001
+    volumes:
+      - ./src:/home/node/app/src
+    ports:
+      - 3001:3001
