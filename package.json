@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint . --fix",
     "start": "npx ts-node src/main.ts",
-    "dist": "npx tsc && node dist/main.js",
+    "dist": "npx tsc && node dist/src/main.js",
     "test:0": "jest",
     "test:1": "CHECKPOINT=1 jest",
     "test:2": "CHECKPOINT=2 jest",
