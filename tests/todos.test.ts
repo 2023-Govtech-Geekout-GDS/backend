@@ -165,7 +165,6 @@ checkpointTwo("POST /todos/random", () => {
     expect(res.status).toEqual(200);
     expect(res.type).toEqual(expect.stringContaining("json"));
     expect(isTodo(res.body)).toBe(true);
-    console.log(res.body);
   });
 });
 
