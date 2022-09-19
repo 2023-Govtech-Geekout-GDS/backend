@@ -30,10 +30,14 @@ build-stage:
 
 # Test stage will be used to run unit testing to make sure your image is ready to be deployed
 test-stage:
+  image: node:alpine
   stage: test
+  tags:
+    - local
+  before_script:
+    - npm install
   script:
-    # Run Unit Test
-    - echo "Run unit test"
+    - npm run test:extra
 
 # Publish stage will establish a connection with AWS and publish your staged image to the Elastic Container Registry
 publish-stage:
