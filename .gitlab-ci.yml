@@ -45,7 +45,8 @@ publish-stage:
   # Extends defines the job action that it inherited from
   image:
     # This image is a special image that is build with both Docker and AWS components
-    name: $CI_REGISTRY/gds-engineering-bootcamp/templates
+    # name: $CI_REGISTRY/gds-engineering-bootcamp/templates
+    name: registry.gitlab.com/gds-engineering-bootcamp/templates
     entrypoint:
       - '/usr/bin/env'
   tags: # Use tags if you have setup your own local Gitlab Runner, else you can omit this
