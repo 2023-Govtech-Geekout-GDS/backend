@@ -2,18 +2,18 @@
   "name": "backend-sandbox",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint --fix",
     "build": "babel index.js -d dist",
     "start": "node src/main.js",
-    "dist": "npx tsc && node dist/src/main.js",
     "test:0": "jest",
     "test:1": "CHECKPOINT=1 jest",
     "test:2": "CHECKPOINT=2 jest",
     "test:extra": "CHECKPOINT=3 jest"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,12 +28,17 @@
     "nodemon": "^2.0.12",
     "supertest": "^6.3.3"
   },
+  "engines": {
+    "node": "18"
+  },
   "dependencies": {
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "express": "^4.18.1",
-    "n": "^9.1.0",
     "node-fetch": "^2.6.7",
     "swagger-ui-express": "^4.5.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "firebase": "^9.21.0",
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.4.0"
   }
 }
