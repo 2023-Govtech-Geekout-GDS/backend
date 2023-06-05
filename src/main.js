@@ -1,8 +1,8 @@
 import cors from 'cors';
 import express from "express";
-import Router from "./routes";
+import Router from "./routes/index.js";
 import swaggerUi from "swagger-ui-express";
-import swaggerJson from "../swagger.json";
+import swaggerJson from "../swagger.json" assert { type: "json" };
 
 const app = express();
 const port = process.env.PORT || 9000;
