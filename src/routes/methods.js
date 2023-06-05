@@ -59,7 +59,9 @@ export async function deleteTodoById(req, res) {
 export async function updateTodoById(req, res) {
   const { id } = req.params;
   const updatedTodo = req.body;
-  if (id in todoList) {
+  if (id !== req.body.id) {
+    return res.status(409).json(ERROR_MSGS.UUID_MISMATCH);
+  } else if (id in todoList) {
     todoList[id] = { ...todoList[id], ...updatedTodo };
     return res.status(200).send();
   } else {

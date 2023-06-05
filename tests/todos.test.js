@@ -109,6 +109,41 @@ checkpointOne("PUT /todos/{id}", () => {
       expect.stringContaining("UUID does not exist")
     );
   });
+
+  const extra = parseInt(process.env.CHECKPOINT) > 2 ? it : it.skip;
+  extra("should return failure when UUID in path and body do not match", async () => {
+    const postRes = await supertestRequest
+      .post("/api/todos")
+      .send({ description: "test api" })
+      .set("Accept", "application/json");
+    const todoToUpdate = postRes.body;
+
+    const res = await supertestRequest
+      .put(`/api/todos/someRandomId`)
+      .send({ id: todoToUpdate.id })
+      .set("Accept", "application/json");
+    expect(res.status).toEqual(409);
+    expect(res.body["message"]).toEqual(
+      expect.stringContaining("UUID in path and body do not match")
+    );
+  });
+
+  extra("should return failure when UUID in body and path do not match", async () => {
+    const postRes = await supertestRequest
+      .post("/api/todos")
+      .send({ description: "test api" })
+      .set("Accept", "application/json");
+    const todoToUpdate = postRes.body;
+
+    const res = await supertestRequest
+      .put(`/api/todos/${todoToUpdate.id}`)
+      .send({ id: "someRandomId" })
+      .set("Accept", "application/json");
+    expect(res.status).toEqual(409);
+    expect(res.body["message"]).toEqual(
+      expect.stringContaining("UUID in path and body do not match")
+    );
+  });
 });
 
 describe("DELETE /todos{id}", () => {
