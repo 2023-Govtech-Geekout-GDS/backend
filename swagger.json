@@ -224,6 +224,9 @@
       "todo": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string"
+          },
           "description": {
             "type": "string"
           },
