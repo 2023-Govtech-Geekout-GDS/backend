@@ -1,7 +1,6 @@
-import { Request, Response } from "express";
-import { todoList } from "./methods";
+import { todoList } from "./methods.js";
 
-export async function updateTodoById(req: Request, res: Response) {
+export async function updateTodoById(req, res) {
   const { id } = req.params;
   const updatedTodo = req.body;
   if (id in todoList) {
@@ -12,7 +11,7 @@ export async function updateTodoById(req: Request, res: Response) {
   }
 }
 
-export async function getTodoById(req: Request, res: Response) {
+export async function getTodoById(req, res) {
     const { id } = req.params;
     if (id in todoList) {
       return res.status(200).json(todoList[id]);

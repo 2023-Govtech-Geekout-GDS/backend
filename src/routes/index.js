@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {
-  createTodo,
-  getAllTodos,
-  deleteTodoById,
-} from "./methods";
+    createTodo,
+    getAllTodos,
+    deleteTodoById
+} from "./methods.js";
 import { getTodoById, updateTodoById } from "./newMethods";
 
 const forwardRouter = Router();

@@ -1,10 +1,8 @@
-import { Request, Response } from "express";
 import { v4 } from "uuid";
-import { Todo } from "types/Todo";
 
-export const todoList: { [id: string]: Todo } = {};
+export const todoList = {};
 
-export async function createTodo(req: Request, res: Response) {
+export async function createTodo(req, res) {
   const body = req.body;
   if (!("description" in body)) {
     return res.status(400).json({ message: "Input task required"});
@@ -20,11 +18,11 @@ export async function createTodo(req: Request, res: Response) {
 }
 
 // Can mention unused request param
-export async function getAllTodos(_req: Request, res: Response) {
+export async function getAllTodos(_req, res) {
   return res.status(200).json(todoList);
 }
 
-export async function deleteTodoById(req: Request, res: Response) {
+export async function deleteTodoById(req, res) {
   const { id } = req.params;
   if (id in todoList) {
       delete todoList[id];
