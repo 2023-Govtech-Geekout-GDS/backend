@@ -6,7 +6,7 @@ import {
     getTodoById,
     updateTodoById,
     createRandomTodo
-} from "./methods";
+} from "./methods.js";
 
 const forwardRouter = Router();
 forwardRouter.post("/todos", createTodo);
