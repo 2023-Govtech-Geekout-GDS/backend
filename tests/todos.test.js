@@ -1,10 +1,10 @@
 import supertest from "supertest";
-import server from "../src/main";
+import server from "../src/main.js";
 
 const supertestRequest = supertest(server);
 
 // Basic check that it has the 3 properties
-function isTodo(obj: object) {
+function isTodo(obj) {
   const id = obj.hasOwnProperty("id");
   const desc = obj.hasOwnProperty("description");
   const done = obj.hasOwnProperty("done");
@@ -50,7 +50,7 @@ describe("GET /todos", () => {
 });
 
 const checkpointOne =
-  parseInt(process.env.CHECKPOINT!) > 0 ? describe : describe.skip;
+  parseInt(process.env.CHECKPOINT) > 0 ? describe : describe.skip;
 checkpointOne("GET /todos/{id}", () => {
   it("should return just one Todo when a valid id is OK", async () => {
     const postRes = await supertestRequest
@@ -137,7 +137,7 @@ describe("DELETE /todos{id}", () => {
     );
   });
 
-  const extra = parseInt(process.env.CHECKPOINT!) > 2 ? it : it.skip;
+  const extra = parseInt(process.env.CHECKPOINT) > 2 ? it : it.skip;
   extra("should return failure when todo is protected", async () => {
     const postRes = await supertestRequest
       .post("/api/todos")
@@ -156,7 +156,7 @@ describe("DELETE /todos{id}", () => {
 });
 
 const checkpointTwo =
-  parseInt(process.env.CHECKPOINT!) > 1 ? describe : describe.skip;
+  parseInt(process.env.CHECKPOINT) > 1 ? describe : describe.skip;
 checkpointTwo("POST /todos/random", () => {
   it("should return a random Todo", async () => {
     const res = await supertestRequest
