@@ -2,7 +2,7 @@ import { v4 } from "uuid";
 import fetch from "node-fetch";
 
 // This is not exported, which means only methods exposed in this file will access it.
-const todoList = {};
+export const todoList = {};
 
 // Option 1 - wrapper for arbitrary messages
 function messageJson(message) {
