@@ -1,3 +1,3 @@
 node_modules
 .gitconfig
-src/private/*
+src/config/firestore-private-key.json
