@@ -4,23 +4,6 @@ import fetch from "node-fetch";
 // This is not exported, which means only methods exposed in this file will access it.
 export const todoList = {};
 
-// Option 1 - wrapper for arbitrary messages
-function messageJson(message) {
-  return { message };
-}
-
-// Option 2 - enumerate the messages
-const ERROR_MSGS = {
-  NO_SUCH_UUID: { message: "UUID does not exist" },
-  TASK_REQUIRED: { message: "Input task required" },
-  UUID_MISMATCH: { message: "UUID in path and body do not match" },
-};
-
-// Option 3 - Encapsulate the response entirely
-function badRequest(res, message) {
-  return res.status(400).json({ message });
-}
-
 export async function createTodo(req, res) {
   const body = req.body;
   if (!("description" in body)) {
@@ -46,7 +29,7 @@ export async function deleteTodoById(req, res) {
   const entryToDelete = todoList[id];
 
   if (!entryToDelete) {
-    return res.status(400).json(ERROR_MSGS.NO_SUCH_UUID);
+    return res.status(400).json({ message: "UUID does not exist" });
   }
 
   if (entryToDelete.description === "Improve backend") {
