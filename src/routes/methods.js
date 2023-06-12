@@ -39,23 +39,3 @@ export async function deleteTodoById(req, res) {
   delete todoList[id];
   return res.status(200).json();
 }
-
-export async function createRandomTodo(_req, res) {
-  try {
-    const responseJson = await fetch(
-      "http://www.boredapi.com/api/activity"
-    ).then((apiResponse) => apiResponse.json());
-    const randomActivity = responseJson["activity"];
-    const randomTodo = {
-      id: v4(),
-      description: randomActivity,
-      done: false,
-    };
-    todoList[randomTodo.id] = randomTodo;
-    return res.status(200).json(randomTodo);
-  } catch (e) {
-    // AbortError not exported in node-fetch V2
-    const errorMessage = messageJson("Request from external api timed out");
-    return res.status(500).json(errorMessage);
-  }
-}
