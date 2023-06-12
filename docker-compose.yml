@@ -9,4 +9,4 @@ services:
     volumes:
       - ./src:/home/node/app/src
     ports:
-      - 3000:3000
+      - 9000:9000

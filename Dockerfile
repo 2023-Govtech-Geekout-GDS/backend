@@ -12,7 +12,7 @@ RUN npm install
 
 COPY --chown=${user} . .
 
-EXPOSE 3000
-ENV PORT 3000
+EXPOSE 9000
+ENV PORT 9000
 
 CMD [ "npm", "run", "dist" ]
