@@ -1,4 +1,3 @@
-import { todoList } from "./methods";
 // import { todoList } from './methods';  // Uncomment this to import todoList
 
 export async function updateTodoById(req, res) {
