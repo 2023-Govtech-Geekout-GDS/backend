@@ -26,7 +26,7 @@ Once you're ready, let's get started with the [Exercise List](https://go.gov.sg/
 
 - Run Application - `npm run start`
 - Fix linter issues - `npm run lint`
-- Run tests for checkpoint 0 - `npm - run test:0`
-- Run tests for checkpoint 1 - `npm - run test:1`
-- Run tests for checkpoint 2 - `npm - run test:2`
-- Run tests for subsequent checkpoints - `npm - run test:extra`
+- Run tests for checkpoint 0 - `npm run test-0`
+- Run tests for checkpoint 1 - `npm run test-1`
+- Run tests for checkpoint 2 - `npm run test-2`
+- Run tests for subsequent checkpoints - `npm run test-extra`
