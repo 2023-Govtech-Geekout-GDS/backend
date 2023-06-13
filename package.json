@@ -8,7 +8,7 @@
     "test": "jest",
     "lint": "eslint --fix",
     "clean": "rm -Rf ./dist",
-    "build": "npm run clean; babel ./src --out-dir ./dist --copy-files",
+    "build": "babel ./src --out-dir ./dist --copy-files",
     "start": "npm run build && nodemon dist/main.js",
     "dist": "npm run build && node dist/main.js",
     "test:0": "jest",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "express": "^4.18.1",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.6.11",
     "swagger-ui-express": "^4.5.0",
     "uuid": "^9.0.0"
   }
