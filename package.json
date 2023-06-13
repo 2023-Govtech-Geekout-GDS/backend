@@ -8,7 +8,7 @@
     "test": "jest",
     "lint": "eslint --fix",
     "clean": "rm -Rf ./dist",
-    "build": "npm run clean; babel ./src --out-dir ./dist --copy-files",
+    "build": "babel ./src --out-dir ./dist --copy-files",
     "start": "npm run build && nodemon dist/main.js",
     "dist": "npm run build && node dist/main.js",
     "test:0": "jest",
