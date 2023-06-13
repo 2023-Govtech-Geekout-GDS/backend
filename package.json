@@ -11,10 +11,10 @@
     "build": "babel ./src --out-dir ./dist --copy-files",
     "start": "npm run build && nodemon dist/main.js",
     "dist": "npm run build && node dist/main.js",
-    "test:0": "jest",
-    "test:1": "CHECKPOINT=1 jest",
-    "test:2": "CHECKPOINT=2 jest",
-    "test:extra": "CHECKPOINT=3 jest"
+    "test-0": "jest",
+    "test-1": "set CHECKPOINT=1 && jest",
+    "test-2": "set CHECKPOINT=2 && jest",
+    "test-extra": "set CHECKPOINT=3 && jest"
   },
   "keywords": [],
   "author": "",
